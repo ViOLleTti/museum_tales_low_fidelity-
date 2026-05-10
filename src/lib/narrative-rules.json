@@ -1,0 +1,492 @@
+{
+  "version": "draft-2",
+  "meta": {
+    "title": "Museum AR Narrative Rules",
+    "scanCluePrefix": "F1-F9",
+    "dialogueCluePrefix": "F10-F25",
+    "notes": [
+      "玩家先扫描展品，获得扫描线索。",
+      "扫描后展示三个 NPC 入口。",
+      "只有命中有效 NPC 触发规则时，才获得 F10-F25。",
+      "P2 扫描 E7 时存在双有效 NPC，为彩蛋机制。"
+    ]
+  },
+  "npcs": {
+    "N1": { "id": "N1", "name": "校史档案员" },
+    "N2": { "id": "N2", "name": "英国交换生" },
+    "N3": { "id": "N3", "name": "保安" }
+  },
+  "exhibits": {
+    "E1": {
+      "id": "E1",
+      "name": "北大药学院纪念盘",
+      "scanClueId": "F1",
+      "scanClueName": "交流纪念完整圆满",
+      "highlightKeyword": "交流",
+      "fuzzyKeywords": ["纪念", "友好"],
+      "scanKeywords": ["交流", "纪念", "友好"],
+      "observation": "一只纪念盘让交流历史显得完整而郑重。"
+    },
+    "E2": {
+      "id": "E2",
+      "name": "港中深纪念币",
+      "scanClueId": "F2",
+      "scanClueName": "小小纪念币承载友谊",
+      "highlightKeyword": "纪念币",
+      "fuzzyKeywords": ["情谊", "见证"],
+      "scanKeywords": ["纪念币", "情谊", "见证"],
+      "observation": "小小纪念币承载着两校之间跨越时间的友谊。"
+    },
+    "E3": {
+      "id": "E3",
+      "name": "同济大学纪念柱",
+      "scanClueId": "F3",
+      "scanClueName": "无声支柱托举大楼",
+      "highlightKeyword": "纪念柱",
+      "fuzzyKeywords": ["支撑", "坚守"],
+      "scanKeywords": ["纪念柱", "支撑", "坚守"],
+      "observation": "纪念柱看似沉默，却像那些真正托举起校园的人。"
+    },
+    "E4": {
+      "id": "E4",
+      "name": "明州越窑青瓷象",
+      "scanClueId": "F4",
+      "scanClueName": "青瓷象与象祥谐音",
+      "highlightKeyword": "青瓷",
+      "fuzzyKeywords": ["吉祥", "温润"],
+      "scanKeywords": ["青瓷", "吉祥", "温润"],
+      "observation": "青瓷象把“象”与“祥”的文化联想安静地留在釉色里。"
+    },
+    "E5": {
+      "id": "E5",
+      "name": "国际象棋套装",
+      "scanClueId": "F5",
+      "scanClueName": "同一规则下不同样貌",
+      "highlightKeyword": "规则",
+      "fuzzyKeywords": ["共通", "多元"],
+      "scanKeywords": ["规则", "共通", "多元"],
+      "observation": "同一套规则，在不同文化手里长出了截然不同的样子。"
+    },
+    "E6": {
+      "id": "E6",
+      "name": "西安交大秦代马车",
+      "scanClueId": "F6",
+      "scanClueName": "战车映出协作与驱动",
+      "highlightKeyword": "马车",
+      "fuzzyKeywords": ["传承", "协作"],
+      "scanKeywords": ["马车", "传承", "协作"],
+      "observation": "古代战车既像协作成果，也像某种被驱动的秩序。"
+    },
+    "E7": {
+      "id": "E7",
+      "name": "手写庆祝书法",
+      "scanClueId": "F7",
+      "scanClueName": "墨色轻重带着情感",
+      "highlightKeyword": "书法",
+      "fuzzyKeywords": ["笔墨", "情感"],
+      "scanKeywords": ["书法", "笔墨", "情感"],
+      "observation": "字未必都能读懂，但墨色轻重已经先把情绪说了出来。"
+    },
+    "E8": {
+      "id": "E8",
+      "name": "运河船模型 + 交接钥匙",
+      "scanClueId": "F8",
+      "scanClueName": "钥匙指向旅程起点",
+      "highlightKeyword": "钥匙",
+      "fuzzyKeywords": ["启航", "联结"],
+      "scanKeywords": ["钥匙", "启航", "联结"],
+      "observation": "这把钥匙并不开锁，却像在提醒一段远行已经开始。"
+    },
+    "E9": {
+      "id": "E9",
+      "name": "校长油画墙",
+      "scanClueId": "F9",
+      "scanClueName": "目光见证学校成长",
+      "highlightKeyword": "成长",
+      "fuzzyKeywords": ["岁月", "守护"],
+      "scanKeywords": ["成长", "岁月", "守护"],
+      "observation": "一代代校长的目光，像无声见证着学校成长的时间轴。"
+    }
+  },
+  "roles": {
+    "P1": {
+      "id": "P1",
+      "name": "校史档案员",
+      "triggers": [
+        {
+          "triggerId": "P1-E1-N1-F10",
+          "exhibitId": "E1",
+          "npcId": "N1",
+          "rewardClueId": "F10",
+          "rewardClueName": "最曲折的捐赠",
+          "prompt": "哪一件捐赠最曲折？",
+          "response": "北大纪念盘曾在库房里搁置一年，后来大家才意识到它保存着最初的交流初心。",
+          "keywords": ["捐赠", "初心"],
+          "consumed": true,
+          "isSecret": false
+        },
+        {
+          "triggerId": "P1-E7-N1-F11",
+          "exhibitId": "E7",
+          "npcId": "N1",
+          "rewardClueId": "F11",
+          "rewardClueName": "同场活动双展品",
+          "prompt": "有没有和同一次交流活动有关的两件展品？",
+          "response": "书法与船模并非同次赠送，却像两段礼物时间共同流进学校发展的长河。",
+          "keywords": ["双展品", "时间线"],
+          "consumed": true,
+          "isSecret": false
+        },
+        {
+          "triggerId": "P1-E2-N2-F12",
+          "exhibitId": "E2",
+          "npcId": "N2",
+          "rewardClueId": "F12",
+          "rewardClueName": "纪念币如跨国成人礼",
+          "prompt": "作为交换生，哪件展品最吸引你？",
+          "response": "她选择了纪念币，说这像一场跨校的成人礼，见证彼此成长与成熟。",
+          "keywords": ["成人礼", "纪念币"],
+          "consumed": true,
+          "isSecret": false
+        },
+        {
+          "triggerId": "P1-E8-N3-F13",
+          "exhibitId": "E8",
+          "npcId": "N3",
+          "rewardClueId": "F13",
+          "rewardClueName": "船模勾起乡愁",
+          "prompt": "每天看着这些展品，你是什么感受？",
+          "response": "船模总让他想起家乡的水路，像把思念和远洋航线叠在了一起。",
+          "keywords": ["乡愁", "水路"],
+          "consumed": true,
+          "isSecret": false
+        }
+      ],
+      "endings": [
+        {
+          "storyId": "p1-forgotten-and-missed",
+          "title": "被遗忘与思念",
+          "description": "把等待中的捐赠与人的思念并置成一条更有温度的校史侧线。",
+          "feedback": "你把物件的等待与人的思念放在了一起，这个展题安静而动人。",
+          "score": 8,
+          "grade": "B",
+          "priority": 30,
+          "requiresAll": ["F10", "F13"]
+        },
+        {
+          "storyId": "p1-gift-timeline",
+          "title": "礼物时间线",
+          "description": "把不同时间抵达校园的礼物整理成一条清晰的交流时间线。",
+          "feedback": "你清楚梳理了礼物抵达校园的顺序，但还可以再补一点人物情感。",
+          "score": 7,
+          "grade": "C",
+          "priority": 10,
+          "requiresAll": ["F11", "F12"]
+        },
+        {
+          "storyId": "p1-stories-behind-donations",
+          "title": "捐赠背后的故事",
+          "description": "从捐赠脉络、时间线与纪念文化中重建两校交流的来路。",
+          "feedback": "你把捐赠细节、礼物时间线和纪念文化串联了起来，很有档案员视角的说服力。",
+          "score": 9,
+          "grade": "A",
+          "priority": 100,
+          "requiresAll": ["F10", "F11", "F12"]
+        },
+        {
+          "storyId": "p1-key-and-boat",
+          "title": "钥匙与船：归乡想象",
+          "description": "让钥匙、船模与归乡想象汇成一条柔软的远行叙事。",
+          "feedback": "你把钥匙和船模连成了关于远行与归乡的一次想象，气质非常统一。",
+          "score": 8,
+          "grade": "B",
+          "priority": 20,
+          "requiresAll": ["F8", "F13"]
+        }
+      ]
+    },
+    "P2": {
+      "id": "P2",
+      "name": "汉教学生",
+      "triggers": [
+        {
+          "triggerId": "P2-E4-N1-F14",
+          "exhibitId": "E4",
+          "npcId": "N1",
+          "rewardClueId": "F14",
+          "rewardClueName": "象祥谐音讲解",
+          "prompt": "怎么向外国人解释“象”与“祥”的谐音？",
+          "response": "谐音像语言缝隙里的秘密，中文里的吉祥，也能在英语双关里找到平行感。",
+          "keywords": ["谐音", "双关"],
+          "consumed": true,
+          "isSecret": false
+        },
+        {
+          "triggerId": "P2-E2-N2-F16",
+          "exhibitId": "E2",
+          "npcId": "N2",
+          "rewardClueId": "F16",
+          "rewardClueName": "纪念币非钱是友谊",
+          "prompt": "“币”像钱，会不会觉得怪？",
+          "response": "她提到英国纪念便士也不是用来消费，而是用来纪念友谊。",
+          "keywords": ["友谊", "纪念币"],
+          "consumed": true,
+          "isSecret": false
+        },
+        {
+          "triggerId": "P2-E7-N2-F15",
+          "exhibitId": "E7",
+          "npcId": "N2",
+          "rewardClueId": "F15",
+          "rewardClueName": "书法墨色如语",
+          "prompt": "你第一次看到这幅书法时是什么感觉？",
+          "response": "她说自己读不懂字，却能感觉到墨色像语气，留白像沉默。",
+          "keywords": ["墨色", "留白"],
+          "consumed": true,
+          "isSecret": false
+        },
+        {
+          "triggerId": "P2-E7-N3-F17",
+          "exhibitId": "E7",
+          "npcId": "N3",
+          "rewardClueId": "F17",
+          "rewardClueName": "手写文字有温度",
+          "prompt": "您认得这幅书法上的字吗？",
+          "response": "他认得一些，却更在乎那股写字时留下的气力，印刷字反而没有这种温度。",
+          "keywords": ["温度", "手写"],
+          "consumed": true,
+          "isSecret": true,
+          "secretType": "easter-egg"
+        }
+      ],
+      "endings": [
+        {
+          "storyId": "p2-homophones-and-coins",
+          "title": "谐音与硬币",
+          "description": "从谐音解释与纪念币文化中看见跨文化沟通的切口。",
+          "feedback": "你抓住了语言和符号的跨文化差异，这条线索清晰但还可以更集中。",
+          "score": 7,
+          "grade": "C",
+          "priority": 10,
+          "requiresAll": ["F14", "F16"]
+        },
+        {
+          "storyId": "p2-warmth-of-handwriting",
+          "title": "手写的温度",
+          "description": "从英国交换生与保安的不同反应里，拼出书法的人情味。",
+          "feedback": "你让同一幅书法在两个人眼里显出不同温度，这条线很细，也很真。",
+          "score": 8,
+          "grade": "B",
+          "priority": 20,
+          "requiresAll": ["F15", "F17"]
+        },
+        {
+          "storyId": "p2-joys-and-frustrations-of-translation",
+          "title": "翻译的苦与乐",
+          "description": "把谐音与墨色并列，呈现一条真正关于理解的跨文化故事。",
+          "feedback": "你完整呈现了误解、发现与理解的过程，这就是最漂亮的一次跨文化译介。",
+          "score": 10,
+          "grade": "S",
+          "priority": 100,
+          "requiresAll": ["F14", "F15"]
+        }
+      ]
+    },
+    "P3": {
+      "id": "P3",
+      "name": "校报记者",
+      "triggers": [
+        {
+          "triggerId": "P3-E3-N1-F18",
+          "exhibitId": "E3",
+          "npcId": "N1",
+          "rewardClueId": "F18",
+          "rewardClueName": "纪念柱是无声支撑",
+          "prompt": "王老师，您最喜欢哪一件？",
+          "response": "纪念柱像一所学校里那些不显眼却总在托举他人的人。",
+          "keywords": ["支撑", "纪念柱"],
+          "consumed": true,
+          "isSecret": false
+        },
+        {
+          "triggerId": "P3-E8-N3-F21",
+          "exhibitId": "E8",
+          "npcId": "N3",
+          "rewardClueId": "F21",
+          "rewardClueName": "船模载乡愁",
+          "prompt": "如果只说一件最打动您的展品，会是哪件？",
+          "response": "还是那只船模，因为它最像一个人在异乡心里偷偷留着的故乡。",
+          "keywords": ["乡愁", "船模"],
+          "consumed": true,
+          "isSecret": false
+        },
+        {
+          "triggerId": "P3-E7-N2-F19",
+          "exhibitId": "E7",
+          "npcId": "N2",
+          "rewardClueId": "F19",
+          "rewardClueName": "书法无需翻译",
+          "prompt": "如果只能带一件回英国，你会选哪件？",
+          "response": "她会选书法，因为有些东西不需要翻译，线条和呼吸本身就能说话。",
+          "keywords": ["翻译", "美感"],
+          "consumed": true,
+          "isSecret": false
+        },
+        {
+          "triggerId": "P3-E5-N2-F20",
+          "exhibitId": "E5",
+          "npcId": "N2",
+          "rewardClueId": "F20",
+          "rewardClueName": "象棋即国际化",
+          "prompt": "哪一件最“国际化”？",
+          "response": "她说是象棋，因为规则相同，却允许每个人留下自己的样子。",
+          "keywords": ["国际化", "规则"],
+          "consumed": true,
+          "isSecret": false
+        },
+        {
+          "triggerId": "P3-E6-N1-F22",
+          "exhibitId": "E6",
+          "npcId": "N1",
+          "rewardClueId": "F22",
+          "rewardClueName": "马车中西双视角",
+          "prompt": "同一件战车文物，在你们眼里意味着什么？",
+          "response": "一个人看到协作与工匠精神，另一个人看到战争与征服，同一件文物折射出两种历史光谱。",
+          "keywords": ["双视角", "战车"],
+          "consumed": true,
+          "isSecret": false
+        }
+      ],
+      "endings": [
+        {
+          "storyId": "p3-homesickness-and-aesthetics",
+          "title": "乡愁与美学",
+          "description": "把离乡者的思念与跨文化审美放在同一个采访镜头里。",
+          "feedback": "你让乡愁与审美并列出现，呈现出一种很记者式的双重观察。",
+          "score": 8,
+          "grade": "B",
+          "priority": 20,
+          "requiresAll": ["F19", "F21"]
+        },
+        {
+          "storyId": "p3-rules-and-change",
+          "title": "规则与改变",
+          "description": "从象棋和战车出发，看见不同文化如何改写同一套规则。",
+          "feedback": "你抓住了“共同规则与不同解释”这一层，这是很稳的记者判断。",
+          "score": 9,
+          "grade": "A",
+          "priority": 30,
+          "requiresAll": ["F20", "F22"]
+        },
+        {
+          "storyId": "p3-silent-support-and-genuine-longing",
+          "title": "无声支撑与真切思念",
+          "description": "在支撑与乡愁之间，拼出一条更安静却更有重量的人物线。",
+          "feedback": "你把支撑与思念并置在一起，这条采访线没有喧哗，却特别有重量。",
+          "score": 8,
+          "grade": "B",
+          "priority": 25,
+          "requiresAll": ["F18", "F21"]
+        },
+        {
+          "storyId": "p3-human-voices",
+          "title": "人的声音",
+          "description": "让多位受访者的回答在同一版面里相互碰撞，形成真正的口述史。",
+          "feedback": "你收集到的已经不止是线索，而是一段完整的人声口述史。",
+          "score": 10,
+          "grade": "S",
+          "priority": 100,
+          "requiresAll": ["F19", "F20", "F21", "F22"]
+        }
+      ]
+    },
+    "P4": {
+      "id": "P4",
+      "name": "志愿者",
+      "triggers": [
+        {
+          "triggerId": "P4-E7-N1-F23",
+          "exhibitId": "E7",
+          "npcId": "N1",
+          "rewardClueId": "F23",
+          "rewardClueName": "建议加留言墙",
+          "prompt": "如果重组展览，您会加什么？",
+          "response": "他想加入留言墙，让观众把自己的礼物与旅程也写进展览里。",
+          "keywords": ["留言墙", "参与"],
+          "consumed": true,
+          "isSecret": false
+        },
+        {
+          "triggerId": "P4-E4-N2-F24",
+          "exhibitId": "E4",
+          "npcId": "N2",
+          "rewardClueId": "F24",
+          "rewardClueName": "青瓷安静共鸣",
+          "prompt": "您在自己国家见过类似的青瓷吗？",
+          "response": "她说见过中国瓷器，却很少见到这样安静的小象，让不同文化的人一同停下。",
+          "keywords": ["共鸣", "青瓷"],
+          "consumed": true,
+          "isSecret": false
+        },
+        {
+          "triggerId": "P4-E5-N3-F25",
+          "exhibitId": "E5",
+          "npcId": "N3",
+          "rewardClueId": "F25",
+          "rewardClueName": "象棋被碰即对话",
+          "prompt": "哪件展品最容易被观众碰歪？",
+          "response": "象棋会被轻轻挪动，但他觉得被挪动本来就是它们参与对话的方式。",
+          "keywords": ["对话", "触碰"],
+          "consumed": true,
+          "isSecret": false
+        }
+      ],
+      "endings": [
+        {
+          "storyId": "p4-intern-complete-record",
+          "title": "志愿者完整记录",
+          "description": "把三位角色对展览的建议完整记下，形成一份真正可用的现场记录。",
+          "feedback": "你把三种声音都记录下来了，这份志愿者笔记已经足够支撑一次新的教育展示。",
+          "score": 9,
+          "grade": "A",
+          "priority": 100,
+          "requiresAll": ["F23", "F24", "F25"]
+        },
+        {
+          "storyId": "p4-message-wall-and-chess",
+          "title": "留言墙与象棋",
+          "description": "从观众留言与棋子挪动中，看见展览如何真正活起来。",
+          "feedback": "你抓住了“观众参与”这一点，让展览从被观看转向被回应。",
+          "score": 8,
+          "grade": "B",
+          "priority": 20,
+          "requiresAll": ["F23", "F25"]
+        },
+        {
+          "storyId": "p4-quietness-and-touch",
+          "title": "安静与触碰",
+          "description": "让青瓷的安静与棋盘的触碰构成一条更简洁的志愿者故事线。",
+          "feedback": "你把安静和触碰并列得很准确，展览因此显得更像人与物共同完成的现场。",
+          "score": 8,
+          "grade": "B",
+          "priority": 10,
+          "requiresAll": ["F24", "F25"]
+        }
+      ]
+    }
+  },
+  "fallbackDialogue": {
+    "N1": "这件展品我暂时没有更多可补充的线索。",
+    "N2": "我对这件展品暂时没有新的感受可以补充。",
+    "N3": "我每天都看见它，但这次没有新的故事要说。"
+  },
+  "rules": {
+    "grantScanClueOnScan": true,
+    "showAllNpcsAfterScan": true,
+    "triggerDialogueOnlyIfRoleExhibitNpcMatches": true,
+    "allowInvalidDialogue": true,
+    "allowHiddenMultipleNpcForSameExhibit": true,
+    "autoUnlockEnding": true,
+    "endingSelectionPolicy": "highest_priority_then_highest_score"
+  }
+}
